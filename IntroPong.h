@@ -19,19 +19,20 @@ public:
 	void logic(int& nextState);
 	void render();
 
-	void loadMedia();
 
 private:
+	void loadMedia();
+
 	int mScreenWidth;
 	int mScreenHeight;
 
 	TTF_Font *mFont = NULL;
 	SDLTexture mTextTexture;
 	SDLTexture mEnterTexture;
+	SDLTexture mMusicCredit;
+
 	Uint8 alpha = 255;
 	Uint8 alphaOffset = 0;
-
-	SDLTexture mMusicCredit;
 
 	//The music that will be played
 	Mix_Music *mMusic = NULL;

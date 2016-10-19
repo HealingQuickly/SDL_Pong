@@ -28,6 +28,7 @@
     <ClCompile Include="PlayerInput.cpp" />
     <ClCompile Include="PongMainGame.cpp" />
     <ClCompile Include="Quad.cpp" />
+    <ClCompile Include="SDLBitmapFont.cpp" />
     <ClCompile Include="SDLEngine.cpp" />
     <ClCompile Include="SDLTexture.cpp" />
   </ItemGroup>
@@ -42,6 +43,7 @@
     <ClInclude Include="PlayerInput.h" />
     <ClInclude Include="PongMainGame.h" />
     <ClInclude Include="Quad.h" />
+    <ClInclude Include="SDLBitmapFont.h" />
     <ClInclude Include="SDLEngine.h" />
     <ClInclude Include="SDLTexture.h" />
   </ItemGroup>

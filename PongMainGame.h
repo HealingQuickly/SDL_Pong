@@ -24,6 +24,7 @@ public:
 	void closeSystem();
 
 	void gameLoop();
+
 	void change_State();
 
 private:

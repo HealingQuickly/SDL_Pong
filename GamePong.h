@@ -3,6 +3,10 @@
 #include "GameState.h"
 
 #include <vector>
+#include <algorithm>
+
+#include "SDLTexture.h"
+#include "SDLBitmapFont.h"
 
 #include "Quad.h"
 #include "PhysicsComponents.h"
@@ -26,20 +30,38 @@ public:
 	void render();
 
 private:
+	//Inner functions that serve the game logic. Is there a place for these functions?
+	void loadMedia();
+	void generateNewPong(int initX, int initY, int width, int height, int velocityX, int velocityY);
+
+	void updatePaddleMovement(Quad* paddle);
+	void updatePongMovement(Quad** pong); //Need to modify the pongs so pass in pointer to pointer
+
+	bool checkHittingPaddle(Quad* paddle, Quad* pong);
+	void hitPaddle(Quad* pong);
+
 	//Get the reference of the renderer
 	SDL_Renderer* mRenderer = NULL;
 
 	int mScreenWidth;
 	int mScreenHeight;
 
+
+	//Assets used for this game
 	Quad* playerPaddle = NULL;
 	Quad* cpuPaddle = NULL;
-	Quad* pong = NULL;
-	std::vector<Quad*> pongs;
+	std::vector<Quad*> mPongs;
 
-	PhysicsComponents* moveQuad = NULL;
-	GraphicComponents* renderQuad = NULL;
+	PhysicsComponents* mPhysicsComponent = NULL;
+	GraphicComponents* mGraphicsComponent = NULL;
 	PlayerInput* playerInput = NULL;
 	CPUInput* cpuInput = NULL;
+
+	//Scene texts textures
+	SDLTexture mBitmapTexture;
+	SDLBitmapFont mBitmapFont;
+	//Keeping score for both sides
+	int mLeftScore = 0;
+	int mRightScore = 0;
 };
 

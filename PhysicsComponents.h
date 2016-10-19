@@ -1,17 +1,24 @@
 #pragma once
 
 #include "Quad.h"
-#include <vector>
 
 class PhysicsComponents
 {
 public:
+	enum WindowSides
+	{
+		NONE,
+		UP,
+		DOWN,
+		LEFT,
+		RIGHT,
+	};
+
 	PhysicsComponents(int screenWidth, int screenHeight);
 
 	void updateMovement(Quad* quad);
-	void hittingPaddle(Quad* paddle, Quad* pong);
 	bool checkCollision(SDL_Rect* a, SDL_Rect* b);
-	bool hittingWindow(int screenWidth, int screenHeight, std::vector<Quad*> pongs);
+	int checkCollisionWithWindow(Quad* quad); // return value indicates the sides of the screen that a quad hits
 	
 private:
 	int mScreenWidth;

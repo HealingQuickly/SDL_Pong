@@ -1,37 +1,30 @@
 #include "CPUInput.h"
-#include <random>
-#include <time.h>
 
-CPUInput::CPUInput(Quad* pong)
+CPUInput::CPUInput() : averageYofPongs(0)
 {
-	mPong = pong;
-	srand(time(0));
-	smartNess = rand() % 3 - 1;
+	
 }
 
 void CPUInput::updateInput(Quad* self, SDL_Event* e)
 {
-	//keep track of pong's Y position
-	knowThePongs();
-
-	if (self->mY + self->mH <= pongY - OFFSET)
+	if (self->mY + self->mH + OFFSET <= averageYofPongs)
 	{
 		// cpu needs to move down
-		self->mVelocityY = self->mSpeed + smartNess;
+		self->mVelocityY = self->mSpeed;
 	}
-	else if (self->mY > pongY + OFFSET)
+	else if (self->mY - OFFSET > averageYofPongs)
 	{
-		self->mVelocityY = -self->mSpeed - smartNess;
+		self->mVelocityY = -self->mSpeed;
 	}
 }
 
-void CPUInput::knowThePongs()
+void CPUInput::knowThePongs(const std::vector<Quad*>& pongs)
 {
-	pongX = mPong->mX;
-	pongY = mPong->mY;
-}
-
-void CPUInput::closeCPUInput()
-{
-	mPong = NULL;
+	int sum = 0;
+	unsigned int size = pongs.size();
+	for (unsigned int i = 0; i < size; i++)
+	{
+		sum += pongs[i]->mY;
+	}
+	averageYofPongs = (size == 0) ? 0 : sum / size;
 }
