@@ -9,33 +9,6 @@ GamePong::GamePong(SDL_Renderer* renderer, int screenWidth, int screenHeight) : 
 
 GamePong::~GamePong()
 {
-	closeGameState();
-}
-
-
-
-// Init game objects here
-void GamePong::initGameState()
-{
-	playerPaddle = new Quad(100, 10);
-	cpuPaddle = new Quad(mScreenWidth - playerPaddle->mW - 100, 10);
-	generateNewPong(mScreenWidth / 2, 2, 10, 10, -2, 3);
-	generateNewPong(mScreenWidth / 2, 20, 10, 10, 3, 1);
-	generateNewPong(mScreenWidth / 2, 20, 10, 10, -3, 4);
-	generateNewPong(mScreenWidth / 2, 50, 10, 10, -2, 1);
-	generateNewPong(mScreenWidth / 2, 100, 10, 10, -2, 2);
-
-	mPhysicsComponent = new PhysicsComponents(mScreenWidth, mScreenHeight);
-	mGraphicsComponent = new GraphicComponents();
-	playerInput = new PlayerInput();
-	cpuInput = new CPUInput(); // cpu Input needs to know the pongs to follow/block them
-
-	// change the cpu paddle's speed
-	cpuPaddle->changeQuadSpeed(3);
-}
-
-void GamePong::closeGameState()
-{
 	mRenderer = NULL;
 
 	delete playerPaddle;
@@ -59,6 +32,28 @@ void GamePong::closeGameState()
 	mRenderer = NULL;
 
 	mBitmapTexture.free();
+}
+
+
+
+// Init game objects here
+void GamePong::initGameState()
+{
+	playerPaddle = new Quad(100, 10);
+	cpuPaddle = new Quad(mScreenWidth - playerPaddle->mW - 100, 10);
+	generateNewPong(mScreenWidth / 2, 2, 10, 10, -2, 3);
+	generateNewPong(mScreenWidth / 2, 20, 10, 10, 3, 1);
+	generateNewPong(mScreenWidth / 2, 20, 10, 10, -3, 4);
+	generateNewPong(mScreenWidth / 2, 50, 10, 10, -2, 1);
+	generateNewPong(mScreenWidth / 2, 100, 10, 10, -2, 2);
+
+	mPhysicsComponent = new PhysicsComponents(mScreenWidth, mScreenHeight);
+	mGraphicsComponent = new GraphicComponents();
+	playerInput = new PlayerInput();
+	cpuInput = new CPUInput(); // cpu Input needs to know the pongs to follow/block them
+
+	// change the cpu paddle's speed
+	cpuPaddle->changeQuadSpeed(3);
 }
 
 void GamePong::handle_events(SDL_Event& event, int& nextState)
@@ -86,7 +81,7 @@ bool pongIsNull(Quad* pong)
 }
 void GamePong::logic(int& nextState)
 {
-	//Check collision between pongs and two paddles
+	//Check collision between all the pongs and two paddles
 	for (unsigned int i = 0; i < mPongs.size(); i++)
 	{
 		if (checkHittingPaddle(playerPaddle, mPongs[i]) || checkHittingPaddle(cpuPaddle, mPongs[i]))

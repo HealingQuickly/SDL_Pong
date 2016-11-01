@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPUInput.cpp" />
+    <ClCompile Include="EndingPong.cpp" />
     <ClCompile Include="GamePong.cpp" />
     <ClCompile Include="GraphicComponents.cpp" />
     <ClCompile Include="IntroPong.cpp" />
@@ -31,9 +32,11 @@
     <ClCompile Include="SDLBitmapFont.cpp" />
     <ClCompile Include="SDLEngine.cpp" />
     <ClCompile Include="SDLTexture.cpp" />
+    <ClCompile Include="TitlePong.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPUInput.h" />
+    <ClInclude Include="EndingPong.h" />
     <ClInclude Include="GamePong.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GraphicComponents.h" />
@@ -46,6 +49,7 @@
     <ClInclude Include="SDLBitmapFont.h" />
     <ClInclude Include="SDLEngine.h" />
     <ClInclude Include="SDLTexture.h" />
+    <ClInclude Include="TitlePong.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C2F90C61-DF22-473A-A616-8473AD6C8D29}</ProjectGuid>

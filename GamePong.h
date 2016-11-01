@@ -22,7 +22,6 @@ public:
 
 	//Init and Wrap up
 	void initGameState();
-	void closeGameState();
 
 	//Main loop functions
 	void handle_events(SDL_Event& event, int& nextState);

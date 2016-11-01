@@ -35,11 +35,18 @@ void PongMainGame::change_State()
 		//Change the state
 		switch (mNextState)
 		{
+		case GameState::STATE_INTRO:
+			mCurrentState = new IntroPong(mSDLPong.getRenderer(), SCREEN_WIDTH, SCREEN_HEIGHT);
+			break;
+		case GameState::STATE_TITLE:
+			mCurrentState = new TitlePong(mSDLPong.getRenderer(), SCREEN_WIDTH, SCREEN_HEIGHT);
+			break;
 		case GameState::STATE_PONG:
 			mCurrentState = new GamePong(mSDLPong.getRenderer(), SCREEN_WIDTH, SCREEN_HEIGHT);
 			break;
-		case GameState::STATE_INTRO:
-			mCurrentState = new IntroPong(mSDLPong.getRenderer(), SCREEN_WIDTH, SCREEN_HEIGHT);
+		case GameState::STATE_ENDING:
+			mCurrentState = new EndingPong(mSDLPong.getRenderer(), SCREEN_WIDTH, SCREEN_HEIGHT);
+			break;
 		}
 
 		//Change the current state ID

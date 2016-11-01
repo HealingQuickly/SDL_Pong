@@ -2,8 +2,10 @@
 
 #include "SDLEngine.h"
 
-#include "GamePong.h"
 #include "IntroPong.h"
+#include "TitlePong.h"
+#include "GamePong.h"
+#include "EndingPong.h"
 
 #include "Quad.h"
 #include "PhysicsComponents.h"

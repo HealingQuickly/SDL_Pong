@@ -23,6 +23,9 @@ public:
 private:
 	void loadMedia();
 
+	//Get the reference of the renderer
+	SDL_Renderer* mRenderer = NULL;
+
 	int mScreenWidth;
 	int mScreenHeight;
 
@@ -36,8 +39,5 @@ private:
 
 	//The music that will be played
 	Mix_Music *mMusic = NULL;
-
-	//Get the reference of the renderer
-	SDL_Renderer* mRenderer = NULL;
 };
 

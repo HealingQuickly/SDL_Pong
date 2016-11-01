@@ -38,7 +38,7 @@ void IntroPong::handle_events(SDL_Event& event, int& nextState)
 		else if ((event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_RETURN))
 		{
 			//Move to the title screen
-			set_next_state(STATE_PONG, nextState);
+			set_next_state(STATE_TITLE, nextState);
 		}
 	}
 }
@@ -55,7 +55,7 @@ void IntroPong::logic(int& nextState)
 
 void IntroPong::render()
 {
-	//Clear screen
+	//Clear screen with white color
 	SDL_SetRenderDrawColor(mRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(mRenderer);
 

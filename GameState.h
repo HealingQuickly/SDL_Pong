@@ -11,6 +11,7 @@ public:
 		STATE_INTRO,
 		STATE_TITLE,
 		STATE_PONG,
+		STATE_ENDING,
 		STATE_EXIT,
 	};
 
